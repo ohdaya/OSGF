@@ -1,4 +1,4 @@
-package com.ohdaya.uicomponents 
+package com.ohdaya.uicomponents.buttons 
 {
 	import com.ohdaya.utils.OSprite;
 	import com.ohdaya.utils.OUtils;
@@ -30,7 +30,7 @@ package com.ohdaya.uicomponents
 		protected function init():void
 		{
 			this.bitmap = new Bitmap();
-			var bitmapdata:BitmapData = OUtils.getBitmapdata("common_green_button_normal");
+			var bitmapdata:BitmapData = OUtils.getBitmapdata(imgkey[0]);
 			this.bitmap.bitmapData = bitmapdata;
 			this.addChild(this.bitmap);
 			this.addEventListener(MouseEvent.CLICK, onClick);
@@ -40,35 +40,35 @@ package com.ohdaya.uicomponents
 			this.addEventListener(MouseEvent.MOUSE_UP, onUp);
 		}
 		
-		protected function onClick(e:MouseEvent):void
+		override protected function onClick(e:MouseEvent):void
 		{
 			trace("button clicked");
 			this.callbackfunc.apply();
 		}
 		
-		protected function onOver(e:MouseEvent):void
+		override protected function onOver(e:MouseEvent):void
 		{
 			this.bitmap.bitmapData.dispose();
-			var bitmapdata:BitmapData = OUtils.getBitmapdata("common_green_button_over");
+			var bitmapdata:BitmapData = OUtils.getBitmapdata(imgkey[1]);
 			this.bitmap.bitmapData = bitmapdata;
 		}
-		protected function onOut(e:MouseEvent):void
+		override protected function onOut(e:MouseEvent):void
 		{
 			this.bitmap.bitmapData.dispose();
-			var bitmapdata:BitmapData = OUtils.getBitmapdata("common_green_button_normal");
+			var bitmapdata:BitmapData = OUtils.getBitmapdata(imgkey[0]);
 			this.bitmap.bitmapData = bitmapdata;
 		}
 		protected function onDown(e:MouseEvent):void
 		{
 			this.bitmap.bitmapData.dispose();
-			var bitmapdata:BitmapData = OUtils.getBitmapdata("common_green_button_normal");
+			var bitmapdata:BitmapData = OUtils.getBitmapdata(imgkey[0]);
 			this.bitmap.bitmapData = bitmapdata;
 		}
 		
 		protected function onUp(e:MouseEvent):void
 		{
 			this.bitmap.bitmapData.dispose();
-			var bitmapdata:BitmapData = OUtils.getBitmapdata("common_green_button_over");
+			var bitmapdata:BitmapData = OUtils.getBitmapdata(imgkey[1]);
 			this.bitmap.bitmapData = bitmapdata;
 		}
 		override public function dispose():void
