@@ -2,6 +2,7 @@ package com.ohdaya.utils
 {
 	import com.ohdaya.interfaces.Idispose;
 	import flash.display.Bitmap;
+	import flash.display.Shape;
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
 	
@@ -58,6 +59,13 @@ package com.ohdaya.utils
 				{
 					//delete bitmapdata
 					(displaytodelete as Bitmap).bitmapData.dispose();
+				}
+				else if(displaytodelete is OSprite)
+				{
+					(displaytodelete as OSprite).dispose();
+				}else if (displaytodelete is Shape)
+				{
+					(displaytodelete as Shape).graphics.clear();
 				}
 				//delete displayobejct
 				if (displaytodelete && displaytodelete.parent)
