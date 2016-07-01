@@ -51,6 +51,7 @@ package com.ohdaya.uicomponents.tabs
 		{
 			this._isselected = p_int;
 			var bitmapdata:BitmapData;
+			this.bitmap.bitmapData.dispose();
 			if (this._isselected == false)
 			{
 				bitmapdata = OUtils.getBitmapdata(imgkey[0]);
