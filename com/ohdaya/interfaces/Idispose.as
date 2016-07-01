@@ -1,4 +1,4 @@
-package com.ohdaya 
+package com.ohdaya.interfaces 
 {
 	
 	/**

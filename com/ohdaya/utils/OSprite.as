@@ -1,8 +1,10 @@
 package com.ohdaya.utils 
 {
-	import com.ohdaya.Idispose;
+	import com.ohdaya.interfaces.Idispose;
 	import flash.display.Bitmap;
+	import flash.display.Shape;
 	import flash.display.Sprite;
+	import flash.events.MouseEvent;
 	
 	/**
 	 * game baisc displayobejct,close mouse interate
@@ -21,10 +23,35 @@ package com.ohdaya.utils
 			this.tabChildren = false;
 			this.tabEnabled = false;
 			
+			if(this.ismouseevent){
+				this.addEventListener(MouseEvent.CLICK, onClick);
+				this.addEventListener(MouseEvent.MOUSE_OVER, onOver);
+				this.addEventListener(MouseEvent.MOUSE_OUT, onOut);
+			}
+		}
+		
+		protected function onClick(e:MouseEvent):void
+		{
+			
+		}
+		
+		protected function onOver(e:MouseEvent):void
+		{
+			
+		}
+		
+		protected function onOut(e:MouseEvent):void
+		{
+			
 		}
 		
 		public function dispose():void
 		{
+			if(this.ismouseevent){
+				this.removeEventListener(MouseEvent.CLICK, onClick);
+				this.removeEventListener(MouseEvent.MOUSE_OVER, onOver);
+				this.removeEventListener(MouseEvent.MOUSE_OUT, onOut);
+			}
 			var displaytodelete:*;
 			while (this.numChildren){
 				displaytodelete  = this.getChildAt(0);
@@ -32,6 +59,13 @@ package com.ohdaya.utils
 				{
 					//delete bitmapdata
 					(displaytodelete as Bitmap).bitmapData.dispose();
+				}
+				else if(displaytodelete is OSprite)
+				{
+					(displaytodelete as OSprite).dispose();
+				}else if (displaytodelete is Shape)
+				{
+					(displaytodelete as Shape).graphics.clear();
 				}
 				//delete displayobejct
 				if (displaytodelete && displaytodelete.parent)
